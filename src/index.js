@@ -4,7 +4,28 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+  let deleteZ = /z/gi;
+  let deleteV = /v/gi;
+  let string1 = string;
+  let string2 = string1.replace(deleteZ, '*');
+  let newString = string2.replace(deleteV, '*');
+  return newString;
+ 
+// второй вариант
+  // let newString = '';
+  // let qwer = string.toLocaleLowerCase();  
+  // for (let i = 0; i < qwer.length; i++){
+  //   if (qwer[i] === 'z') {
+  //     newString = newString + '*';
+     
+  //     } else if (qwer[i] === 'v') {
+  //       newString = newString + '*';
+  //     }
+  //     newString = newString + qwer[i];
+  // }
+  // return newString;
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
