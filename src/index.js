@@ -5,26 +5,17 @@
  * @returns {string}
  */
 export const replaceZAndVFromString = (string) => {
-  let deleteZ = /z/gi;
-  let deleteV = /v/gi;
-  let string1 = string;
-  let string2 = string1.replace(deleteZ, '*');
-  let newString = string2.replace(deleteV, '*');
+  let newString = '';
+  for (let i = 0; i < string.length; i++) {
+    if (string[i].toLowerCase() === 'z') {
+      newString = newString + '*';
+    } else if (string[i].toLowerCase() === 'v') {
+      newString = newString + '*';
+    } else {
+      newString = newString + string[i];
+    }
+  }
   return newString;
- 
-// второй вариант
-  // let newString = '';
-  // let qwer = string.toLocaleLowerCase();  
-  // for (let i = 0; i < qwer.length; i++){
-  //   if (qwer[i] === 'z') {
-  //     newString = newString + '*';
-     
-  //     } else if (qwer[i] === 'v') {
-  //       newString = newString + '*';
-  //     }
-  //     newString = newString + qwer[i];
-  // }
-  // return newString;
 };
 
 /**
@@ -37,7 +28,14 @@ export const replaceZAndVFromString = (string) => {
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+  let findIndex = string.indexOf(word);
+  if (string.indexOf(word) !== -1) {
+    return `${string.slice(0, findIndex)}${newWord}${string.slice(findIndex, word.length)}`;
+  } else {
+    return string;
+  }
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -45,7 +43,9 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+  return string.slice(0, length);
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -58,7 +58,15 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+  let count = 0;
+  for (let i = 0; i < string.length; i++) {
+    if (string[i].toLowerCase() === symbol.toLocaleLowerCase()) {
+      count++;
+    }
+    return count;
+  }
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -75,4 +83,15 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+  let startNumber = 0;
+  let position = -1;
+  while (true) {
+    position = string.toLocaleLowerCase().indexOf(symbol, position + 1);
+    if (position === -1) {
+      break
+    }
+    startNumber++;
+  }
+  return startNumber
+};
