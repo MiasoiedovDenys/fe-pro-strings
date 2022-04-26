@@ -29,9 +29,9 @@ export const replaceZAndVFromString = (string) => {
  * @returns {string}
  */
 export const changeWord = (string, word, newWord) => {
-  let findIndex = string.indexOf(word);
   if (string.indexOf(word) !== -1) {
-    return `${string.slice(0, findIndex)}${newWord}${string.slice(findIndex, word.length)}`;
+    let findIndex = string.indexOf(word);
+    return `${string.slice(0, findIndex)}${newWord}${string.slice(findIndex + string.length)}`;
   } else {
     return string;
   }
@@ -64,8 +64,8 @@ export const quantityOfSymbols = (string, symbol) => {
     if (string[i].toLowerCase() === symbol.toLocaleLowerCase()) {
       count++;
     }
-    return count;
   }
+  return count;
 };
 
 /**
