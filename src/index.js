@@ -31,7 +31,7 @@ export const replaceZAndVFromString = (string) => {
 export const changeWord = (string, word, newWord) => {
   if (string.indexOf(word) !== -1) {
     let findIndex = string.indexOf(word);
-    return `${string.slice(0, findIndex)}${newWord}${string.slice(findIndex + string.length)}`;
+    return `${string.slice(0, findIndex)}${newWord}${string.slice(findIndex + word.length)}`;
   } else {
     return string;
   }
